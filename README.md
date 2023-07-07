@@ -126,7 +126,7 @@ createApp(App).mount("#app")
 
 <template>
 
-  <h4>Html 태그 바인딩 해보기 <spna v-html="rawHtml"></spna></h4>  
+  <h4>Html 태그 바인딩 해보기 <spna v-html="rawHtml"></span></h4>  
 
 </template>
 
