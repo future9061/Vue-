@@ -4,12 +4,68 @@ vue 기초를 공부하며 정리해놓는 repository 입니다.
 <br />
 
  ## 🔸목차
+ 0. [알아야 할 개념/용어정리](#용어정리) 
  1. [vue App 생성하기](#1장-vue-app-생성하기)
  2. [vue의 template 문법 사용](#2장-vue의-template-문법-사용)
 
 <br />
 <br />
 
+## 용어정리❗
+ <br />
+ 
+ 1. v-directive
+ 
+ <br />
+ 
+ - **vue의 API 스타일**
+
+
+vue component는 **options API**와 **Composition API** 두 가지 스타일로 작성할 수 있다.
+1. **Options API** <br />
+option의 data,methods, mounted 같은 객체를 사용해서 컴포넌트 로직 정의. <br />
+data에 반환된 속성들은 반응적인 상태가 되어 this에 노출된다.<br />
+data는 데이터를 담고 있고, methods는 속성 값을 변경하고 업데이트 할 수 있으며 template 내에서 이벤트 리스너로 바인딩된다.<br /> mounted는 컴포넌트가 mount 된 후 호출된다.
+```ruby
+
+<script>
+  export default{
+  data(){
+    return{
+        conunt: 0
+    }
+  },
+
+  methods:{
+    increment(){
+      this.count++
+      },
+
+    mounted(){
+      console.log(`count:${this.count}`)
+    }
+  }
+}
+</script>
+
+<template>
+  <button >+</button>
+</template>
+```
+
+
+
+ 2. Composition API
+ 
+ <br />
+
+ - Data binding
+ 
+ <br />
+ 
+ - setup 과 scoped
+ 
+ <br />
 
 
 ## 1장 vue app 생성하기
@@ -46,11 +102,13 @@ createApp(App).mount("#app")
 
 <script> 
  export default {
-  data()
+  data(){
      return{
        title : "데이터바인딩" 
    }   
-  }
+  },
+  method:{
+ }
 }
 </script>
 ```
