@@ -26,6 +26,7 @@ vue component는 **options API**와 **Composition API** 두 가지 스타일로 
 option의 data,methods, mounted 같은 객체를 사용해서 컴포넌트 로직 정의. <br />
 data에 반환된 속성들은 반응적인 상태가 되어 this에 노출된다.<br />
 data는 데이터를 담고 있고, methods는 속성 값을 변경하고 업데이트 할 수 있으며 template 내에서 이벤트 리스너로 바인딩된다.<br /> mounted는 컴포넌트가 mount 된 후 호출된다.
+
 ```ruby
 
 <script>
@@ -49,21 +50,25 @@ data는 데이터를 담고 있고, methods는 속성 값을 변경하고 업데
 </script>
 
 <template>
-  <button >+</button>
+  <button v-on:click="increment">+</button>
 </template>
 ```
 
 
 
- 2. Composition API
- 
+1. **Composition API** <br />
+import 해서 가져온 API 함수들은 사용하여 컴포넌트의 로직을 정의 <br />
+코드를 기능별로 그룹화하고 재사용 가능한 로직을 작성하는 데 사용됩니다 <br />
+<script setup>
  <br />
 
  - Data binding
  
  <br />
  
- - setup 과 scoped
+  **setup과 scoped**
+  
+  
  
  <br />
 
