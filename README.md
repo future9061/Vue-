@@ -15,13 +15,17 @@ vue 기초를 공부하며 정리해놓는 repository 입니다.
  <br />
  
  1. v-directive
- 
+ vue에서 **HTML 태그 안에** v-접두사를 가지는 모든 속성들을 의미한다.<br />
+ 화면의 요소를 좀 더 쉽게 조작하기 위해 사용하는 기능이다.
+
+`v-if, v-for, v-show, v-`
+
  <br />
  
  - **vue의 API 스타일**
 
 
-vue component는 **options API**와 **Composition API** 두 가지 스타일로 작성할 수 있다.
+vue component는 **options API**와 **Composition API** 두 가지 스타일로 작성할 수 있다. <br />
 1. **Options API** <br />
 option의 data,methods, mounted 같은 객체를 사용해서 컴포넌트 로직 정의. <br />
 data에 반환된 속성들은 반응적인 상태가 되어 this에 노출된다.<br />
@@ -58,16 +62,34 @@ data는 데이터를 담고 있고, methods는 속성 값을 변경하고 업데
 
 1. **Composition API** <br />
 import 해서 가져온 API 함수들은 사용하여 컴포넌트의 로직을 정의 <br />
-코드를 기능별로 그룹화하고 재사용 가능한 로직을 작성하는 데 사용됩니다 <br />
-<script setup>
- <br />
+코드를 기능별로 그룹화하고 재사용 가능한 로직을 작성하는 데 사용된다. <br />
+composition API에 setup 옵션으로 데이터, 메서드, 생명주기 훅 등을 정의할 수 있다. <script setup> <br />
+자동으로 런타임 코드를 생성하여 컴포넌트에 바인딩되기 때문에 따로 컴포넌트 옵션을 선언할 필요가 없다.<br />
 
- - Data binding
+```ruby
+
+<script setup>
+import { ref, onMouted } from 'vue' //import로 vue의 함수 가져와서 사용
+
+const count = ref(0)  //ref 함루호 반응적인 상태의 count 변수 생성
+
+function increment(){
+ count.value++
+}
+
+onMounted(()=>{
+ console.log(`count:${ count.value}`)
+})
+
+```
+
  
  <br />
  
-  **setup과 scoped**
-  
+- setup과 scoped<br />
+**setup**은 vue3에서 도입되었으며, composition API를 사용할 때 적용되는 옵션이다. <br />
+setup 블록 내에서는 import로 함수 가져오기, const, let으로 변수 선언하기, watch, watchEffec, onMounted 등의 생명주기 훅을 사용할 수 있음 <br />
+**scoped** 는 vue의 <style> 블록에 적용되며, 사용할 시 컴포넌트의 범위로 스타일이 한정되어 다른 컴포넌트에 영향을 주지 않는다.
   
  
  <br />
@@ -161,7 +183,8 @@ createApp(App).mount("#app")
 <template>
 
   <div v-bind:id="idName1">속성 바인딩</div>  //directive는 v-  접두사를 가진 속성들
-   //축약형
+
+//축약형
   <div:id="idName2">속성 바인딩</div>  
 
 </template>
@@ -189,7 +212,7 @@ createApp(App).mount("#app")
 
 <template>
 
-  <h4>Html 태그 바인딩 해보기 <spna v-html="rawHtml"></span></h4>  
+  <h4>Html 태그 바인딩 해보기 <span v-html="rawHtml"></span></h4>  
 
 </template>
 
